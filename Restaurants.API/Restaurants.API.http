@@ -1,6 +1,75 @@
 @Restaurants.API_HostAddress = http://localhost:5268
 
-GET {{Restaurants.API_HostAddress}}/weatherforecast/
+GET {{Restaurants.API_HostAddress}}/api/restaurants
 Accept: application/json
 
 ###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/11
+
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "La Bella Vita",
+    "description": "Authentic Italian cuisine with homemade pasta.",
+    "category": "Italian",
+    "hasDelivery": true,
+    "contactEmail": "info@labellavita.com",
+    "contactNumber": "+39 06 1234567",
+    "city": "Rome",
+    "street": "Via Veneto 12",
+    "postalCode": "01_234"
+}
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "description": "Missing name and category."
+}
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Test Restaurant",
+    "description": "Test Description",
+    "category": "French",
+    "hasDelivery": false,
+    "contactEmail": "not-an-email"
+}
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Postal Test",
+    "description": "Testing postal code validation",
+    "category": "Spanish",
+    "hasDelivery": true,
+    "postalCode": "12345"   // Wrong format, should be XX_XXX
+}
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Minimal Restaurant",
+    "description": "Only required fields provided.",
+    "category": "Mexican",
+    "hasDelivery": false
+}
+###
+POST http://localhost:5268/api/restaurants
+Content-Type: application/json
+
+{
+    "name": "Phone Test",
+    "description": "Testing short phone number",
+    "category": "Japanese",
+    "hasDelivery": false,
+    "contactNumber": "123"
+}
+
