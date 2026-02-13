@@ -2,6 +2,7 @@
 
 using AutoMapper;
 using Restaurants.Application.Command.CreateRestaurant;
+using Restaurants.Application.Command.UpdateRestaurant;
 using Restaurants.Application.Queries.GetAllRestaurants;
 using Restaurants.Domain.Entities;
 
@@ -27,6 +28,8 @@ public class RestaurantProfile : Profile
                     PostalCode = src.PostalCode
                 })
             );
+
+        CreateMap<UpdateRestaurantCommand, Restaurant>();
 
     }
 }

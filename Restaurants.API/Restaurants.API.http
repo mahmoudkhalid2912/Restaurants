@@ -72,4 +72,141 @@ Content-Type: application/json
     "hasDelivery": false,
     "contactNumber": "123"
 }
+###
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/24
+###
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/23
+###
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/11
+Content-Type: application/json
 
+{
+    "id": 11,
+    "name": "Updated Italian Restaurant",
+    "description": "Updated description",
+    "category": "Italian",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/11
+Content-Type: application/json
+
+{
+    "id": 12,
+    "name": "Mismatch Test",
+    "description": "Route id and body id different",
+    "category": "Italian",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/50
+Content-Type: application/json
+
+{
+    "id": 50,
+    "name": "Not Found Test",
+    "description": "This restaurant does not exist",
+    "category": "Italian",
+    "hasDelivery": true
+}
+###
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/0
+Content-Type: application/json
+
+{
+    "id": 0,
+    "name": "Invalid ID",
+    "description": "Invalid id test",
+    "category": "Italian",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/-5
+Content-Type: application/json
+
+{
+    "id": -5,
+    "name": "Negative ID",
+    "description": "Negative id test",
+    "category": "Italian",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/12
+Content-Type: application/json
+
+{
+    "id": 12,
+    "description": "Missing name",
+    "category": "Italian",
+    "hasDelivery": true
+}
+#####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/12
+Content-Type: application/json
+
+{
+    "id": 12,
+    "name": "",
+    "description": "Empty name test",
+    "category": "Italian",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/13
+Content-Type: application/json
+
+{
+    "id": 13,
+    "name": "Test Name",
+    "category": "Italian",
+    "hasDelivery": true
+}
+######
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/14
+Content-Type: application/json
+
+{
+    "id": 14,
+    "name": "Test Name",
+    "description": "Test description",
+    "hasDelivery": true
+}
+#####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/14
+Content-Type: application/json
+
+{
+    "id": 14,
+    "name": "Test Name",
+    "description": "Test description",
+    "category": "",
+    "hasDelivery": true
+}
+####
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/15
+Content-Type: application/json
+
+{
+    "id": 15,
+    "name": "Delivery Disabled",
+    "description": "Now delivery is disabled",
+    "category": "French",
+    "hasDelivery": false
+}
+######
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/16
+Content-Type: application/json
+
+{}
+########
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/16
+Content-Type: application/json
+
+{
+    "id": 16,
+    "name": "Broken JSON",
+    "description": "Missing comma"
+    "category": "Italian",
+    "hasDelivery": true
+}
